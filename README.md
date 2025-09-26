@@ -1,35 +1,65 @@
 # Mini Blog API (Tier 1 — In-Memory)
 
-## 📌 Setup Instructions
+# Mini Blog API (Tier 1 — In-Memory)
 
-### 1. Create & activate virtual environment
-- **Windows (PowerShell):**
-```powershell
+
+📝 Project Overview
+
+Mini Blog API is a Django REST Framework (DRF) project that allows users to:
+
+Create, update, delete, and fetch blog posts.
+
+Add comments to posts, and manage (update/delete) their comments.
+
+Supports pagination and returns posts in reverse chronological order (latest first).
+
+Includes authentication for secure operations.
+
+
+⚙️ Setup Instructions
+1. Clone Repository
+git clone https://github.com/<YOUR-USERNAME>/MiniBlogAPI.git
+cd MiniBlogAPI
+
+
+2. Create & Activate Virtual Environment
+# Windows (cmd)
 python -m venv .venv
-.\.venv\Scripts\activate
-```
-or
-```powershell
 .venv\Scripts\activate
-```
 
-- **Linux/macOS:**
-```bash
+# Mac/Linux
 python3 -m venv .venv
 source .venv/bin/activate
-```
 
-### 2. Install dependencies
-```bash
-pip install django djangorestframework
-```
+3. Install Dependencies
+pip install -r requirements.txt
 
-### 3. Run the development server
-```bash
+
+4. Run Development Server
 python manage.py runserver
-```
 
----
+
+API will be available at:
+👉 http://127.0.0.1:8000/api/
+
+
+
+
+🚀 API Endpoints
+🔹 Posts
+Method	Endpoint	Description	Auth Required
+GET	/api/posts/	List all posts (latest first, paginated)	❌ No
+POST	/api/posts/	Create a new post	✅ Yes
+GET	/api/posts/<id>/	Retrieve a single post + comments	❌ No
+PUT	/api/posts/<id>/	Update a post (only author)	✅ Yes
+DELETE	/api/posts/<id>/	Delete a post (only author)	✅ Yes
+🔹 Comments
+Method	Endpoint	Description	Auth Required
+POST	/api/posts/<id>/comments/	Add comment to a post	✅ Yes
+PUT	/api/comments/<id>/	Update a comment (author)	✅ Yes
+DELETE	/api/comments/<id>/	Delete a comment (author)	✅ Yes
+
+
 
 ## 📌 Example Requests & Responses
 
